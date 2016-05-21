@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>Linux 常用指令 | C&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="[Linux]Linux常用指令sed,awk,grep,head,tail
+cat
+tar
+ps,top,free,kill
+ls,mkdir,rm,mv,ln,touch,chmod,chown
+netstat,ping,ifconfig,telnet,cp,scp,strace,trace,gdb,nohup
+后台运行、标准输入输出重定向、管道
+pidof,lsof,jstack
+wc,le">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Linux 常用指令">
+<meta property="og:url" content="http://yoursite.com/2016/05/20/Linux-常用指令/index.html">
+<meta property="og:site_name" content="C's Blog">
+<meta property="og:description" content="[Linux]Linux常用指令sed,awk,grep,head,tail
+cat
+tar
+ps,top,free,kill
+ls,mkdir,rm,mv,ln,touch,chmod,chown
+netstat,ping,ifconfig,telnet,cp,scp,strace,trace,gdb,nohup
+后台运行、标准输入输出重定向、管道
+pidof,lsof,jstack
+wc,le">
+<meta property="og:updated_time" content="2016-05-20T13:37:02.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Linux 常用指令">
+<meta name="twitter:description" content="[Linux]Linux常用指令sed,awk,grep,head,tail
+cat
+tar
+ps,top,free,kill
+ls,mkdir,rm,mv,ln,touch,chmod,chown
+netstat,ping,ifconfig,telnet,cp,scp,strace,trace,gdb,nohup
+后台运行、标准输入输出重定向、管道
+pidof,lsof,jstack
+wc,le">
+  
+    <link rel="alternative" href="/atom.xml" title="C&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/resources/cat.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Chenjh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">主页</a></li>
+				        
+							<li><a href="/archives">所有文章</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/catrossim" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/catrossim" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/linux/" style="font-size: 10px;">linux</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Chenjh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/resources/cat.jpeg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Chenjh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">主页</a></li>
+		        
+					<li><a href="/archives">所有文章</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/catrossim" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/catrossim" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-Linux-常用指令" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/20/Linux-常用指令/" class="article-date">
+  	<time datetime="2016-05-20T04:33:38.000Z" itemprop="datePublished">2016-05-20</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Linux 常用指令
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/linux/">linux</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="Linux-Linux常用指令"><a href="#Linux-Linux常用指令" class="headerlink" title="[Linux]Linux常用指令"></a>[Linux]Linux常用指令</h1><p>sed,<em>awk</em>,grep,<em>head</em>,<em>tail</em></p>
+<p><em>cat</em></p>
+<p><em>tar</em></p>
+<p>ps,top,free,kill</p>
+<p>ls,mkdir,rm,mv,ln,touch,chmod,chown</p>
+<p>netstat,ping,ifconfig,telnet,cp,scp,strace,trace,gdb,<em>nohup</em></p>
+<p>后台运行、标准输入输出重定向、管道</p>
+<p>pidof,lsof,jstack</p>
+<p><em>wc</em>,less,man,uniq,sort,xarges,find<br><a id="more"></a></p>
+<h2 id="awk"><a href="#awk" class="headerlink" title="awk"></a>awk</h2><h3 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h3><p>样式扫描和处理语言。</p>
+<p>允许用户创建简短的程序，这些程序读取输入文件、为数据排序、处理数据、对输入执行计算以及生成报表等。</p>
+<h3 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">1.awk [ -F field-separator ] [ -v var=value ] [ <span class="string">'prog'</span> | <span class="_">-f</span> progfile ] [ file ...  ]</span><br><span class="line"><span class="string">'-F'</span>定义域分隔符</span><br><span class="line"><span class="string">'-v'</span>可定义引入<span class="string">'prog'</span>的变量</span><br><span class="line"><span class="string">'-f'</span>，awk命令可以写在一个单独文件再来调用</span><br><span class="line">prog的格式：<span class="string">'pattern &#123;action&#125;'</span>,pattern指过滤条件，action指执行程序</span><br><span class="line"></span><br><span class="line">2.shell脚本</span><br><span class="line">将所有的awk命令插入一个文件，并使awk程序可执行，然后awk命令解释器作为脚本的首行，一遍通过键入脚本名称来调用。</span><br><span class="line">相当于shell脚本首行的：<span class="comment">#!/bin/sh</span></span><br><span class="line">可以换成：<span class="comment">#!/bin/awk</span></span><br></pre></td></tr></table></figure>
+<h3 id="示例"><a href="#示例" class="headerlink" title="示例"></a>示例</h3><p>显示最近登录的5个账号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">last -5 | awk <span class="string">'&#123;print $1&#125;'</span></span><br><span class="line"><span class="comment"># awk工作流程是这样的：读入有'\n'换行符分割的一条记录，然后将记录按指定的域# 分隔符划分域，填充域，$0则表示所有域,$1表示第一个域,$n表示第n个域。默认 # 域分隔符是"空白键" 或 "[tab]键".</span></span><br></pre></td></tr></table></figure>
+<p>测试样本</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">//将netstat的输出重定向到netstat.txt</span><br><span class="line">netstat <span class="variable">$1</span>&gt;netstat.txt</span><br></pre></td></tr></table></figure>
+<p>输出proto和local-address列信息</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'&#123;print $1,$4&#125;'</span> netstat.txt</span><br></pre></td></tr></table></figure>
+<p>格式化输出</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'&#123;printf "%-6s %-6s %-6s %-18s\n",$1,$2,$3,$4&#125;'</span> netstat.txt</span><br></pre></td></tr></table></figure>
+<p>输出第一列为tcp4，第六列为ESTABLISHED的记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'$1=="tcp4" &amp;&amp; $6=="ESTABLISHED"'</span> netstat.txt</span><br><span class="line"><span class="comment"># 除了==外，其他运算符还有!=,&gt;,&lt;,&gt;=,&lt;=</span></span><br></pre></td></tr></table></figure>
+<p>输出第一列为udp4的记录的第4列</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'$1=="udp4" &#123;print $4&#125;'</span> netstat.txt</span><br></pre></td></tr></table></figure>
+<p>输出输出第一列为tcp4，第六列为ESTABLISHED的记录和表头</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'$1=="tcp4" &amp;&amp; $6=="ESTABLISHED"||NR==2'</span> netstat.txt</span><br><span class="line"><span class="comment"># NR是awk的内置变量，表示记录的行号，netstat.txt中表头在第二行</span></span><br></pre></td></tr></table></figure>
+<table>
+<thead>
+<tr>
+<th>内置变量</th>
+<th>含义</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$0</td>
+<td>当前记录（这个变量中存放着整个行的内容）</td>
+</tr>
+<tr>
+<td>$1~$n</td>
+<td>当前记录的第n个字段，字段间由FS分隔</td>
+</tr>
+<tr>
+<td>FS</td>
+<td>输入字段分隔符 默认是空格或Tab</td>
+</tr>
+<tr>
+<td>NF</td>
+<td>当前记录中的字段个数，就是有多少列</td>
+</tr>
+<tr>
+<td>NR</td>
+<td>已经读出的记录数，就是行号，从1开始，如果有多个文件话，这个值也是不断累加中。</td>
+</tr>
+<tr>
+<td>FNR</td>
+<td>当前记录数，与NR不同的是，这个值会是各个文件自己的行号</td>
+</tr>
+<tr>
+<td>RS</td>
+<td>输入的记录分隔符， 默认为换行符</td>
+</tr>
+<tr>
+<td>OFS</td>
+<td>输出字段分隔符， 默认也是空格</td>
+</tr>
+<tr>
+<td>ORS</td>
+<td>输出的记录分隔符，默认为换行符</td>
+</tr>
+<tr>
+<td>FILENAME</td>
+<td>当前输入文件的名字</td>
+</tr>
+</tbody>
+</table>
+<p>利用内置变量输出行号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'$1=="tcp4" &#123;printf "%-4s %-8s\n",NR,$1&#125;'</span> netstat.txt</span><br></pre></td></tr></table></figure>
+<p>指定分隔符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;FS=":"&#125;&#123;print $1,$2&#125;'</span> /etc/passwd</span><br><span class="line"><span class="comment"># 相当于 awk -F: '&#123;print $1,$2&#125;' /etc/passwd</span></span><br><span class="line"><span class="comment"># BEGIN&#123; 这里面放的是执行前的语句 &#125;</span></span><br></pre></td></tr></table></figure>
+<p>指定分隔符，输出限于前20行，且不含有“#”号</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk <span class="string">'BEGIN&#123;FS=":"&#125; NR&lt;20 &amp;&amp; $1 !~ /#/ &#123;print $1,$2&#125;'</span> /etc/passwd</span><br></pre></td></tr></table></figure>
+<p>指定多个分隔符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">awk -F <span class="string">'[:;]'</span> [file path]</span><br></pre></td></tr></table></figure>
+<p>指定输出分隔符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">awk  -F: <span class="string">'&#123;print $1,$3,$6&#125;'</span> OFS=<span class="string">"\t"</span> /etc/passwd</span><br><span class="line">//OFS默认为空格</span><br></pre></td></tr></table></figure>
+<p>九九乘法表（TODO）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">seq 9 | sed <span class="string">'H;g'</span> | awk -v RS=<span class="string">''</span> <span class="string">'&#123;for(i=1;i&lt;=NF;i++)printf("%dx%d=%d%s", i, NR, i*NR, i==NR?"\n":"\t")&#125;'</span></span><br></pre></td></tr></table></figure>
+<h2 id="cat"><a href="#cat" class="headerlink" title="cat"></a>cat</h2><h3 id="作用-1"><a href="#作用-1" class="headerlink" title="作用"></a>作用</h3><p>串联和输出文件</p>
+<h3 id="基本用法-1"><a href="#基本用法-1" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cat [-benstuv] [file ...]</span><br><span class="line">cat &gt; file</span><br><span class="line">cat file | <span class="built_in">command</span></span><br></pre></td></tr></table></figure>
+<h3 id="示例-1"><a href="#示例-1" class="headerlink" title="示例"></a>示例</h3><p>一次输出整个文件（a.txt）</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat a.txt</span><br></pre></td></tr></table></figure>
+<p>输出文件，并带行号显示</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 只对非空行计数</span></span><br><span class="line">cat -b a.txt</span><br><span class="line"><span class="comment"># 对所有输出行都计数</span></span><br><span class="line">cat -n a.txt</span><br></pre></td></tr></table></figure>
+<p>输出文件，多个连续空行合并为一个空行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat <span class="_">-s</span> a.txt</span><br></pre></td></tr></table></figure>
+<p>输出文件，显示非打印字符</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># tab 输出为'^I'</span></span><br><span class="line">cat -t a.txt</span><br><span class="line"><span class="comment"># 不显示tab</span></span><br><span class="line">cat -v a.txt</span><br><span class="line"><span class="comment"># 每行尾部输出'$'</span></span><br><span class="line">cat <span class="_">-e</span> a.txt</span><br></pre></td></tr></table></figure>
+<p>从磁盘新建一个文件</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">cat &gt; b.txt</span><br><span class="line"><span class="comment"># 输入文件内容后ctrl+d退出</span></span><br></pre></td></tr></table></figure>
+<p>合并文件，将a.txt和b.txt的内容合并到c.txt，c.txt可以不存在</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat a.txt b.txt &gt; c.txt</span><br></pre></td></tr></table></figure>
+<p>追加文件内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 追加到a.txt，ctrl+d退出</span></span><br><span class="line">cat &gt;&gt; a.txt</span><br><span class="line"><span class="comment"># 追加到a.txt，监测一行只输入字符‘EOF’即退出</span></span><br><span class="line">cat &gt;&gt; a.txt &lt;&lt;EOF</span><br></pre></td></tr></table></figure>
+<p>输出文件中特定内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">cat a.txt| grep [sth.]</span><br></pre></td></tr></table></figure>
+<h2 id="head"><a href="#head" class="headerlink" title="head"></a>head</h2><h3 id="作用-2"><a href="#作用-2" class="headerlink" title="作用"></a>作用</h3><p>输出文件开头的文字区块</p>
+<h3 id="基本用法-2"><a href="#基本用法-2" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head [-n count | -c bytes] [file ...]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-2"><a href="#示例-2" class="headerlink" title="示例"></a>示例</h3><p>显示文件前5行内容</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -n 5 netstat.txt</span><br></pre></td></tr></table></figure>
+<p>显示文件前10个字节</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">head -c 10 netstat.txt</span><br></pre></td></tr></table></figure>
+<h2 id="last"><a href="#last" class="headerlink" title="last"></a>last</h2><h3 id="作用-3"><a href="#作用-3" class="headerlink" title="作用"></a>作用</h3><p>显示最近登录的用户和终端信息</p>
+<h3 id="基本用法-3"><a href="#基本用法-3" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">last [-<span class="variable">$n</span>] [-h <span class="variable">$host</span>] [-t <span class="variable">$tty</span>] [user ...]</span><br><span class="line">tty代表终端设备</span><br><span class="line">host代表主机名</span><br><span class="line">n代表输出记录数目</span><br><span class="line">user代表登录用户</span><br></pre></td></tr></table></figure>
+<h3 id="示例-3"><a href="#示例-3" class="headerlink" title="示例"></a>示例</h3><p>显示最近10条记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last -10</span><br></pre></td></tr></table></figure>
+<p>显示ttys001最近10条记录</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">last -10 -t s001</span><br></pre></td></tr></table></figure>
+<h2 id="nohup"><a href="#nohup" class="headerlink" title="nohup"></a>nohup</h2><h3 id="作用-4"><a href="#作用-4" class="headerlink" title="作用"></a>作用</h3><p>启动一条免疫HANGUP信号的命令（终端关闭后进程继续运行）</p>
+<h3 id="基本用法-4"><a href="#基本用法-4" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># &amp; 使命令在后台运行</span></span><br><span class="line">nohup [<span class="built_in">command</span>] &amp;</span><br></pre></td></tr></table></figure>
+<h3 id="示例-4"><a href="#示例-4" class="headerlink" title="示例"></a>示例</h3><p>后台运行命令，且不随终端关闭而关闭，输出重定向到文件nohup.out</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">nohup ping 119.75.218.70 &amp;</span><br></pre></td></tr></table></figure>
+<h2 id="tail"><a href="#tail" class="headerlink" title="tail"></a>tail</h2><h3 id="作用-5"><a href="#作用-5" class="headerlink" title="作用"></a>作用</h3><p>输出文件最后的内容</p>
+<h3 id="基本用法-5"><a href="#基本用法-5" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail [-F | -f | -r] [-q] [-b number | -c number | -n number] [file ...]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-5"><a href="#示例-5" class="headerlink" title="示例"></a>示例</h3><p>显示最后6行</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -n 6 netstat.txt</span><br></pre></td></tr></table></figure>
+<p>显示最后6行，并随文件内容更新实时输出<br><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail <span class="_">-f</span> -n 6 netstat.txt</span><br></pre></td></tr></table></figure></p>
+<p>显示最后6行，输出顺序调转</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tail -rn 6 netstat.txt</span><br></pre></td></tr></table></figure>
+<h2 id="tar"><a href="#tar" class="headerlink" title="tar"></a>tar</h2><h3 id="作用-6"><a href="#作用-6" class="headerlink" title="作用"></a>作用</h3><p>操作压缩文件</p>
+<h3 id="基本用法-6"><a href="#基本用法-6" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">tar [bundled-flags &lt;args&gt;] [&lt;file&gt; | &lt;pattern&gt; ...]</span><br><span class="line">tar &#123;-c&#125; [options] [files | directories]</span><br><span class="line">tar &#123;-r | -u&#125; <span class="_">-f</span> archive-file [options] [files | directories]</span><br><span class="line">tar &#123;-t | -x&#125; [options] [patterns]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-6"><a href="#示例-6" class="headerlink" title="示例"></a>示例</h3><p>解压文档到新建文件夹</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">tar xvf [filename]</span><br></pre></td></tr></table></figure>
+<h2 id="wc"><a href="#wc" class="headerlink" title="wc"></a>wc</h2><h3 id="作用-7"><a href="#作用-7" class="headerlink" title="作用"></a>作用</h3><p>统计字符、行、单词和字节数目</p>
+<h3 id="基本用法-7"><a href="#基本用法-7" class="headerlink" title="基本用法"></a>基本用法</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">wc [-clmw] [file ...]</span><br></pre></td></tr></table></figure>
+<h3 id="示例-7"><a href="#示例-7" class="headerlink" title="示例"></a>示例</h3><p>显示文件行数</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">//行的界定是用换行符进行，假如文件最后一行没有换行符会少计算一行</span><br><span class="line">wc <span class="_">-l</span> netstat.txt</span><br><span class="line">//下面命令可解决这个问题</span><br><span class="line">grep -c <span class="string">""</span> netstat.txt</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/20/A-New-Post/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">A New Post</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+<div class="duoshuo">
+	<!-- 多说评论框 start -->
+	<div class="ds-thread" data-thread-key="Linux-常用指令" data-title="Linux 常用指令" data-url="http://yoursite.com/2016/05/20/Linux-常用指令/"></div>
+	<!-- 多说评论框 end -->
+	<!-- 多说公共JS代码 start (一个网页只需插入一次) -->
+	<script type="text/javascript">
+	var duoshuoQuery = {short_name:"true"};
+	(function() {
+		var ds = document.createElement('script');
+		ds.type = 'text/javascript';ds.async = true;
+		ds.src = (document.location.protocol == 'https:' ? 'https:' : 'http:') + '//static.duoshuo.com/embed.js';
+		ds.charset = 'UTF-8';
+		(document.getElementsByTagName('head')[0] 
+		 || document.getElementsByTagName('body')[0]).appendChild(ds);
+	})();
+	</script>
+	<!-- 多说公共JS代码 end -->
+</div>
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Chenjh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
