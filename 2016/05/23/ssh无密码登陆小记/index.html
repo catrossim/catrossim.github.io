@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" >
+  <title>ssh无密码登陆小记 | C&#39;s Blog</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ssh无密码登陆小记">
+<meta property="og:url" content="http://yoursite.com/2016/05/23/ssh无密码登陆小记/index.html">
+<meta property="og:site_name" content="C's Blog">
+<meta property="og:description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
+<meta property="og:updated_time" content="2016-05-23T12:44:44.000Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ssh无密码登陆小记">
+<meta name="twitter:description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
+  
+    <link rel="alternative" href="/atom.xml" title="C&#39;s Blog" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+  <div id="container">
+    <div class="left-col">
+    <div class="overlay"></div>
+<div class="intrude-less">
+	<header id="header" class="inner">
+		<a href="/" class="profilepic">
+			
+			<img lazy-src="/resources/cat.jpeg" class="js-avatar">
+			
+		</a>
+
+		<hgroup>
+		  <h1 class="header-author"><a href="/">Chenjh</a></h1>
+		</hgroup>
+
+		
+
+		
+			<div class="switch-btn">
+				<div class="icon">
+					<div class="icon-ctn">
+						<div class="icon-wrap icon-house" data-idx="0">
+							<div class="birdhouse"></div>
+							<div class="birdhouse_holes"></div>
+						</div>
+						<div class="icon-wrap icon-ribbon hide" data-idx="1">
+							<div class="ribbon"></div>
+						</div>
+						
+						
+					</div>
+					
+				</div>
+				<div class="tips-box hide">
+					<div class="tips-arrow"></div>
+					<ul class="tips-inner">
+						<li>Menu</li>
+						<li>Tags</li>
+						
+						
+					</ul>
+				</div>
+			</div>
+		
+
+		<div class="switch-area">
+			<div class="switch-wrap">
+				<section class="switch-part switch-part1">
+					<nav class="header-menu">
+						<ul>
+						
+							<li><a href="/">Home</a></li>
+				        
+							<li><a href="/archives">Archives</a></li>
+				        
+							<li><a href="/tags/linux">Linux</a></li>
+				        
+						</ul>
+					</nav>
+					<nav class="header-nav">
+						<div class="social">
+							
+								<a class="github" target="_blank" href="https://github.com/catrossim" title="github">github</a>
+					        
+								<a class="weibo" target="_blank" href="http://weibo.com/catrossim" title="weibo">weibo</a>
+					        
+						</div>
+					</nav>
+				</section>
+				
+				
+				<section class="switch-part switch-part2">
+					<div class="widget tagcloud" id="js-tagcloud">
+						<a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
+					</div>
+				</section>
+				
+				
+				
+
+				
+			</div>
+		</div>
+	</header>				
+</div>
+
+    </div>
+    <div class="mid-col">
+      <nav id="mobile-nav">
+  	<div class="overlay">
+  		<div class="slider-trigger"></div>
+  		<h1 class="header-author js-mobile-header hide">Chenjh</h1>
+  	</div>
+	<div class="intrude-less">
+		<header id="header" class="inner">
+			<div class="profilepic">
+			
+				<img lazy-src="/resources/cat.jpeg" class="js-avatar">
+			
+			</div>
+			<hgroup>
+			  <h1 class="header-author">Chenjh</h1>
+			</hgroup>
+			
+			<nav class="header-menu">
+				<ul>
+				
+					<li><a href="/">Home</a></li>
+		        
+					<li><a href="/archives">Archives</a></li>
+		        
+					<li><a href="/tags/linux">Linux</a></li>
+		        
+		        <div class="clearfix"></div>
+				</ul>
+			</nav>
+			<nav class="header-nav">
+				<div class="social">
+					
+						<a class="github" target="_blank" href="https://github.com/catrossim" title="github">github</a>
+			        
+						<a class="weibo" target="_blank" href="http://weibo.com/catrossim" title="weibo">weibo</a>
+			        
+				</div>
+			</nav>
+		</header>				
+	</div>
+</nav>
+
+      <div class="body-wrap"><article id="post-ssh无密码登陆小记" class="article article-type-post" itemscope itemprop="blogPost">
+  
+    <div class="article-meta">
+      <a href="/2016/05/23/ssh无密码登陆小记/" class="article-date">
+  	<time datetime="2016-05-23T12:43:21.000Z" itemprop="datePublished">2016-05-23</time>
+</a>
+    </div>
+  
+  <div class="article-inner">
+    
+      <input type="hidden" class="isFancy" />
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ssh无密码登陆小记
+    </h1>
+  
+
+      </header>
+      
+      <div class="article-info article-info-post">
+        
+	<div class="article-tag tagcloud">
+		<ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ssh/">ssh</a></li></ul>
+	</div>
+
+        
+
+        <div class="clearfix"></div>
+      </div>
+      
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h1 id="ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;"><a href="#ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;" class="headerlink" title="ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;"></a>ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;</h1><h2 id="&#x76EE;&#x6807;"><a href="#&#x76EE;&#x6807;" class="headerlink" title="&#x76EE;&#x6807;"></a>&#x76EE;&#x6807;</h2><ol>
+<li>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x521B;&#x5EFA;&#x7528;&#x6237;<code>test</code>&#xFF0C;&#x5E76;&#x5BF9;test&#x521B;&#x5EFA;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x3001;&#x6307;&#x5B9A;shell&#x3001;&#x521D;&#x59CB;&#x5316;&#x5BC6;&#x7801;&#x3002;</li>
+<li>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x7981;&#x7528;<code>root</code>&#x7528;&#x6237;&#x767B;&#x9646;&#xFF0C;&#x53EF;&#x7528;<code>test</code>&#x8FDB;&#x884C;&#x514D;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x3002;</li>
+<li>&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;(L)&#x901A;&#x8FC7;ssh&#x767B;&#x9646;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x65F6;&#x4E0D;&#x9700;&#x8981;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1B;<a id="more"></a>
+<h2 id="&#x64CD;&#x4F5C;&#x73AF;&#x5883;"><a href="#&#x64CD;&#x4F5C;&#x73AF;&#x5883;" class="headerlink" title="&#x64CD;&#x4F5C;&#x73AF;&#x5883;"></a>&#x64CD;&#x4F5C;&#x73AF;&#x5883;</h2></li>
+</ol>
+<ul>
+<li><p>Local Server&#xFF08;L&#xFF09;:</p>
+<ul>
+<li>os: OSX 10.11.4</li>
+</ul>
+</li>
+<li><p>Remote Server&#xFF08;R&#xFF09;:</p>
+<ul>
+<li>os: Ubuntu 14.04.3 LTS</li>
+<li>host: plus</li>
+</ul>
+</li>
+</ul>
+<h2 id="R&#x90E8;&#x5206;"><a href="#R&#x90E8;&#x5206;" class="headerlink" title="R&#x90E8;&#x5206;"></a>R&#x90E8;&#x5206;</h2><h3 id="&#x6982;&#x8981;"><a href="#&#x6982;&#x8981;" class="headerlink" title="&#x6982;&#x8981;"></a>&#x6982;&#x8981;</h3><p>&#x8003;&#x8651;&#x5230;&#x9700;&#x8981;&#x7981;&#x7528;<code>root</code>&#x7528;&#x6237;&#x767B;&#x9646;&#xFF0C;&#x9700;&#x8981;&#x65B0;&#x5EFA;&#x4E00;&#x4E2A;<code>test</code>&#x7528;&#x6237;&#x4F9B;&#x767B;&#x9646;&#x4F7F;&#x7528;&#x3002;&#x540C;&#x65F6;&#x9700;&#x8981;&#x5BF9;<code>test</code>&#x7528;&#x6237;&#x8FDB;&#x884C;&#x57FA;&#x672C;&#x7684;&#x521D;&#x59CB;&#x5316;&#xFF0C;&#x5982;&#x8BBE;&#x7F6E;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x3001;&#x6307;&#x5B9A;shell&#x4EE5;&#x53CA;&#x8BBE;&#x7F6E;&#x5BC6;&#x7801;&#x7B49;&#x3002;</p>
+<h3 id="&#x65B0;&#x589E;&#x7528;&#x6237;"><a href="#&#x65B0;&#x589E;&#x7528;&#x6237;" class="headerlink" title="&#x65B0;&#x589E;&#x7528;&#x6237;"></a>&#x65B0;&#x589E;&#x7528;&#x6237;</h3><h4 id="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;useradd"><a href="#&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;useradd" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;useradd"></a>&#x65B9;&#x6CD5;&#x4E00;&#xFF1A;useradd</h4><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ useradd <span class="_">-s</span> /bin/bash <span class="_">-d</span> /home/<span class="built_in">test</span> -m</span><br></pre></td></tr></table></figure>
+<p><code>-d &lt;path&gt;</code>&#x6307;&#x5B9A;&#x7528;&#x6237;&#x76EE;&#x5F55;&#xFF0C;&#x4F46;&#x5982;&#x679C;&#x6307;&#x5411;&#x7684;&#x6587;&#x4EF6;&#x5939;&#x4E0D;&#x5B58;&#x5728;&#xFF0C;&#x4E0D;&#x4E3B;&#x52A8;&#x521B;&#x5EFA;&#x3002;<code>-m</code>&#x8868;&#x793A;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x4E0D;&#x5B58;&#x5728;&#x5C31;&#x521B;&#x5EFA;&#x3002;<code>-s &lt;path&gt;</code>&#x6307;&#x5B9A;&#x767B;&#x9646;&#x65F6;&#x4F7F;&#x7528;&#x7684;shell&#x3002;</p>
+<p>&#x6307;&#x5B9A;<code>test</code>&#x7684;&#x7528;&#x6237;&#x5BC6;&#x7801;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ passwd <span class="built_in">test</span></span><br></pre></td></tr></table></figure>
+<p>&#x5728;<code>test</code>&#x6CA1;&#x6709;&#x52A0;&#x5165;<code>sudoer</code>&#x65F6;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">test</span>@plus:$ sudo ls</span><br><span class="line">[sudo] password <span class="keyword">for</span> <span class="built_in">test</span>: </span><br><span class="line"><span class="built_in">test</span> is not <span class="keyword">in</span> the sudoers file.  This incident will be reported.</span><br></pre></td></tr></table></figure>
+<p>&#x7ED9;<code>test</code>&#x52A0;&#x5165;<code>sudo</code>&#x7684;&#x6743;&#x9650;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ su</span><br><span class="line">$ visudo</span><br></pre></td></tr></table></figure>
+<p>&#x4FEE;&#x6539;&#x6587;&#x4EF6;&#x5185;&#x5BB9;&#xFF0C;&#x52A0;&#x5165;<code>test  ALL=(ALL:ALL) ALL</code></p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># User privilege specification</span></span><br><span class="line">root    ALL=(ALL:ALL) ALL</span><br><span class="line"><span class="built_in">test</span>  ALL=(ALL:ALL) ALL</span><br></pre></td></tr></table></figure>
+<h4 id="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;adduser"><a href="#&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;adduser" class="headerlink" title="&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;adduser"></a>&#x65B9;&#x6CD5;&#x4E8C;&#xFF1A;adduser</h4><p>&#x6267;&#x884C;&#x547D;&#x4EE4;<code>adduser &lt;user&gt;</code>&#xFF0C;&#x63D0;&#x4F9B;&#x4E86;&#x4EA4;&#x4E92;&#x5F0F;&#x7684;&#x64CD;&#x4F5C;&#xFF0C;&#x9ED8;&#x8BA4;&#x521B;&#x5EFA;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x3002;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line">root@plus:~<span class="comment"># adduser test2</span></span><br><span class="line">perl: warning: Setting locale failed.</span><br><span class="line">perl: warning: Please check that your locale settings:</span><br><span class="line">	LANGUAGE = (<span class="built_in">unset</span>),</span><br><span class="line">	LC_ALL = (<span class="built_in">unset</span>),</span><br><span class="line">	LANG = <span class="string">&quot;zh_CN.UTF-8&quot;</span></span><br><span class="line">    are supported and installed on your system.</span><br><span class="line">perl: warning: Falling back to the standard locale (<span class="string">&quot;C&quot;</span>).</span><br><span class="line">Adding user `<span class="built_in">test</span>2<span class="string">&apos; ...</span><br><span class="line">Adding new group `test2&apos;</span> (1002) ...</span><br><span class="line">Adding new user `<span class="built_in">test</span>2<span class="string">&apos; (1002) with group `test2&apos;</span> ...</span><br><span class="line">Creating home directory `/home/<span class="built_in">test</span>2<span class="string">&apos; ...</span><br><span class="line">Copying files from `/etc/skel&apos;</span> ...</span><br><span class="line">Enter new UNIX password: </span><br><span class="line">Retype new UNIX password: </span><br><span class="line">passwd: password updated successfully</span><br><span class="line">Changing the user information <span class="keyword">for</span> <span class="built_in">test</span>2</span><br><span class="line">Enter the new value, or press ENTER <span class="keyword">for</span> the default</span><br><span class="line">	Full Name []: </span><br><span class="line">	Room Number []: </span><br><span class="line">	Work Phone []: </span><br><span class="line">	Home Phone []: </span><br><span class="line">	Other []:</span><br></pre></td></tr></table></figure>
+<p>&#x7ED9;<code>test</code>&#x52A0;&#x5165;<code>sudo</code>&#x7684;&#x6743;&#x9650;&#x7684;&#x64CD;&#x4F5C;&#x540C;&#x65B9;&#x6CD5;&#x4E00;&#x3002;</p>
+<p>&#x81F3;&#x6B64;&#x65B0;&#x589E;&#x7528;&#x6237;&#x6B65;&#x9AA4;&#x7ED3;&#x675F;&#xFF0C;&#x4E0B;&#x4E00;&#x6B65;&#x662F;&#x8FDB;&#x884C;ssh&#x76F8;&#x5173;&#x914D;&#x7F6E;&#x3002;</p>
+<h3 id="SSH&#x914D;&#x7F6E;"><a href="#SSH&#x914D;&#x7F6E;" class="headerlink" title="SSH&#x914D;&#x7F6E;"></a>SSH&#x914D;&#x7F6E;</h3><p>&#x524D;&#x63D0;&#xFF1A;&#x9700;&#x8981;&#x5728;&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x751F;&#x6210;&#x516C;&#x94A5;&#xFF0C;&#x53C2;&#x8003;<strong>L&#x90E8;&#x5206;</strong>&#x3002;</p>
+<p>&#x516C;&#x94A5;&#x6240;&#x5728;&#x6587;&#x4EF6;&#xFF08;&#x4F8B;&#xFF09;&#xFF1A;<code>~/.ssh/id_rsa_plus.pub</code></p>
+<h4 id="&#x516C;&#x94A5;&#x5BFC;&#x5165;"><a href="#&#x516C;&#x94A5;&#x5BFC;&#x5165;" class="headerlink" title="&#x516C;&#x94A5;&#x5BFC;&#x5165;"></a>&#x516C;&#x94A5;&#x5BFC;&#x5165;</h4><p>&#x7B80;&#x5355;&#x5730;&#x5C06;<strong>L</strong>&#x4E0A;&#x7684;&#x516C;&#x94A5;&#x590D;&#x5236;&#x5230;<strong>R</strong>&#x7684;<code>~/.ssh/authorized_keys</code>&#x6587;&#x4EF6;&#x3002;</p>
+<p>&#x6216;&#x8005;<code>scp</code>&#xFF0C;&#x6216;&#x8005;<code>ssh-copy-id</code>&#x3002;</p>
+<p>&#x786E;&#x8BA4;&#x6587;&#x4EF6;&#x6743;&#x9650;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">$ chmod 700 ~/.ssh</span><br><span class="line">$ chmod 600 ~/.ssh/authorized_keys</span><br></pre></td></tr></table></figure>
+<h4 id="&#x4FEE;&#x6539;&#x914D;&#x7F6E;"><a href="#&#x4FEE;&#x6539;&#x914D;&#x7F6E;" class="headerlink" title="&#x4FEE;&#x6539;&#x914D;&#x7F6E;"></a>&#x4FEE;&#x6539;&#x914D;&#x7F6E;</h4><p>ssh&#x7684;&#x914D;&#x7F6E;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x662F;<code>/etc/ssh/sshd_config</code>&#xFF0C;&#x4FEE;&#x6539;&#x5176;&#x4E2D;&#x51E0;&#x9879;&#x4E3A;&#x5982;&#x4E0B;&#x5F62;&#x5F0F;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">AuthorizedKeysFile	.ssh/authorized_keys</span><br><span class="line"><span class="comment"># &#x7981;&#x6B62;root&#x767B;&#x9646;(&#x53EF;&#x9009;)</span></span><br><span class="line">PermitRootLogin no</span><br><span class="line"><span class="comment"># &#x4E0D;&#x4F7F;&#x7528;&#x5BC6;&#x7801;&#x767B;&#x9646;(&#x53EF;&#x9009;)</span></span><br><span class="line">PasswordAuthentication no</span><br><span class="line"><span class="comment"># &#x4F7F;&#x7528;&#x516C;&#x94A5;&#x8BA4;&#x8BC1;</span></span><br><span class="line">PubkeyAuthentication yes</span><br></pre></td></tr></table></figure>
+<p>&#x6211;&#x7684;&#x76EE;&#x6807;&#x662F;&#x53EA;&#x7559;&#x516C;&#x94A5;&#x8BA4;&#x8BC1;&#xFF0C;&#x6240;&#x4EE5;&#x628A;&#x5BC6;&#x7801;&#x4E5F;&#x53BB;&#x6389;&#x4E86;&#xFF0C;&#x5176;&#x5B9E;&#x5982;&#x679C;&#x662F;&#x4EC5;&#x4E3A;&#x65B9;&#x4FBF;&#x7684;&#x8BDD;&#xFF0C;&#x7559;&#x7740;&#x5BC6;&#x7801;&#x4E5F;&#x6CA1;&#x95EE;&#x9898;&#x3002;</p>
+<p>&#x4FDD;&#x5B58;&#x4FEE;&#x6539;&#x540E;&#xFF0C;&#x91CD;&#x542F;<code>ssh</code>&#x670D;&#x52A1;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ service ssh restart</span><br></pre></td></tr></table></figure>
+<h2 id="L&#x90E8;&#x5206;"><a href="#L&#x90E8;&#x5206;" class="headerlink" title="L&#x90E8;&#x5206;"></a>L&#x90E8;&#x5206;</h2><h3 id="&#x6982;&#x8981;-1"><a href="#&#x6982;&#x8981;-1" class="headerlink" title="&#x6982;&#x8981;"></a>&#x6982;&#x8981;</h3><p>&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;&#x9700;&#x8981;&#x505A;&#x7684;&#x4E8B;&#x2014;&#x2014;&#x751F;&#x6210;&#x5BC6;&#x94A5;&#xFF0C;&#x79C1;&#x94A5;&#x81EA;&#x5DF1;&#x4FDD;&#x7BA1;&#xFF0C;&#x516C;&#x94A5;&#x4E0A;&#x4F20;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;R&#x3002;</p>
+<h3 id="&#x751F;&#x6210;&#x5BC6;&#x94A5;"><a href="#&#x751F;&#x6210;&#x5BC6;&#x94A5;" class="headerlink" title="&#x751F;&#x6210;&#x5BC6;&#x94A5;"></a>&#x751F;&#x6210;&#x5BC6;&#x94A5;</h3><p>&#x6267;&#x884C;&#x547D;&#x4EE4;<code>ssh-keygen</code>&#xFF0C;&#x63D0;&#x4F9B;&#x4EA4;&#x4E92;&#x5F0F;&#x64CD;&#x4F5C;&#xFF0C;&#x9ED8;&#x8BA4;&#x751F;&#x6210;&#x957F;&#x5EA6;&#x4E3A;2048bits&#x7684;RSA&#x7F16;&#x7801;&#x4E32;&#x3002;&#x9700;&#x8981;&#x8F93;&#x5165;&#x6587;&#x4EF6;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line">chenjh@<span class="built_in">local</span>:~$ ssh-keygen</span><br><span class="line">Generating public/private rsa key pair.</span><br><span class="line">Enter file <span class="keyword">in</span> <span class="built_in">which</span> to save the key (/home/chenjh/.ssh/id_rsa): /home/chenjh/.ssh/id_rsa_<span class="built_in">test</span></span><br><span class="line">Enter passphrase (empty <span class="keyword">for</span> no passphrase): </span><br><span class="line">Enter same passphrase again: </span><br><span class="line">Your identification has been saved <span class="keyword">in</span> /home/chenjh/.ssh/id_rsa_test.</span><br><span class="line">Your public key has been saved <span class="keyword">in</span> /home/chenjh/.ssh/id_rsa_test.pub.</span><br><span class="line">The key fingerprint is:</span><br><span class="line">d5:fe:fa:c4:19:45:b4:24:1c:e8:23:75:ba:87:47:d5 chenjh@<span class="built_in">local</span></span><br><span class="line">The key<span class="string">&apos;s randomart image is:</span><br><span class="line">+--[ RSA 2048]----+</span><br><span class="line">|            oo.o+|</span><br><span class="line">|           + oooE|</span><br><span class="line">|          + + ...|</span><br><span class="line">|         o = . . |</span><br><span class="line">|        S . * .  |</span><br><span class="line">|           o = o |</span><br><span class="line">|            o =  |</span><br><span class="line">|             o   |</span><br><span class="line">|            ...  |</span><br><span class="line">+-----------------+</span></span><br></pre></td></tr></table></figure>
+<p>&#x6267;&#x884C;&#x7ED3;&#x679C;&#x662F;&#x5728;<code>/home/chenjh/.ssh/</code>&#x4E0B;&#x751F;&#x6210;&#x79C1;&#x94A5;<code>id_rsa_plus</code>&#x548C;&#x516C;&#x94A5;<code>id_rsa_plus.pub</code>&#x3002;</p>
+<p>&#x7531;&#x4E8E;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x591A;&#x53F0;&#x670D;&#x52A1;&#x5668;&#x7684;&#x5BC6;&#x94A5;&#xFF0C;&#x8FD9;&#x91CC;&#x5E76;&#x6CA1;&#x6709;&#x4F7F;&#x7528;&#x9ED8;&#x8BA4;&#x7684;&#x5BC6;&#x94A5;&#x4FDD;&#x5B58;&#x8DEF;&#x5F84;<code>/home/chenjh/.ssh/id_rsa</code>&#x3002;&#x4E60;&#x60EF;&#x4E0A;&#xFF0C;&#x6211;&#x4F1A;&#x5728;<code>id_rsa</code>&#x540E;&#x9762;&#x52A0;&#x4E0A;&#x670D;&#x52A1;&#x5668;&#x540D;&#x79F0;&#x6807;&#x8BC6;&#x3002;&#x4F8B;&#x5982;&#x8FD9;&#x91CC;&#x662F;<code>id_rsa_plus</code>&#x3002;</p>
+<p>&#x5728;<code>ssh</code>&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;R&#x7684;&#x8FC7;&#x7A0B;&#x4E2D;&#xFF0C;&#x9ED8;&#x8BA4;&#x662F;&#x67E5;&#x627E;<code>/home/chenjh/.ssh/id_rsa</code>&#x8FDB;&#x884C;&#x5339;&#x914D;&#x3002;&#x4F46;&#x8FD9;&#x91CC;&#x79C1;&#x94A5;&#x7684;&#x6587;&#x4EF6;&#x8DEF;&#x5F84;&#x662F;<code>/home/chenjh/.ssh/id_rsa_plus</code>&#xFF0C;&#x56E0;&#x6B64;&#x8FD8;&#x9700;&#x8981;&#x8FDB;&#x884C;&#x4E00;&#x4E9B;&#x5904;&#x7406;&#x3002;</p>
+<h3 id="&#x66F4;&#x6539;&#x9A8C;&#x8BC1;&#x8DEF;&#x5F84;"><a href="#&#x66F4;&#x6539;&#x9A8C;&#x8BC1;&#x8DEF;&#x5F84;" class="headerlink" title="&#x66F4;&#x6539;&#x9A8C;&#x8BC1;&#x8DEF;&#x5F84;"></a>&#x66F4;&#x6539;&#x9A8C;&#x8BC1;&#x8DEF;&#x5F84;</h3><p>&#x4FEE;&#x6539;&#x4F4D;&#x7F6E;&#x5728;&#x6587;&#x4EF6;<code>~/.ssh/config</code>&#xFF0C;&#x5047;&#x5982;&#x6CA1;&#x6709;&#x8FD9;&#x4E2A;&#x6587;&#x4EF6;&#xFF0C;&#x9700;&#x8981;&#x5148;&#x4EBA;&#x5DE5;&#x521B;&#x5EFA;</p>
+<p><code>vim ~/.ssh/config</code>&#x3002;</p>
+<p>&#x5728;&#x6587;&#x4EF6;<code>~/.ssh/config</code>&#x4E2D;&#x5199;&#x5165;&#x4EE5;&#x4E0B;&#x683C;&#x5F0F;&#x7684;&#x5185;&#x5BB9;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host &lt;SHORT_SERVER_NAME&gt; </span><br><span class="line">    Hostname &lt;IP_OR_HOST_NAME&gt;</span><br><span class="line">    IdentitiesOnly yes</span><br><span class="line">    IdentityFile &lt;PRIVATE_KEY_PATH&gt;</span><br></pre></td></tr></table></figure>
+<p>&#x6CE8;&#x610F;&#x6BCF;&#x884C;&#x6709;&#x7A7A;&#x683C;&#x3002;</p>
+<p><code>Host &lt;SHORT_SERVER_NAME&gt;</code>&#x5B9A;&#x4E49;&#x4E00;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x6635;&#x79F0;&#xFF0C;&#x4E4B;&#x540E;<code>ssh</code>&#x7684;&#x65F6;&#x5019;&#x4E0D;&#x7528;&#x8F93;&#x5165;&#x6574;&#x4E2A;&#x670D;&#x52A1;&#x5668;&#x5730;&#x5740;&#xFF0C;&#x53EA;&#x8981;&#x6635;&#x79F0;&#x5C31;&#x597D;&#x3002;&#x4F8B;&#x5982;<code>ssh test@plus</code>&#x3002;</p>
+<p><code>Hostname &lt;IP_OR_HOST_NAME&gt;</code>&#x5BF9;&#x5E94;&#x662F;&#x670D;&#x52A1;&#x5668;&#x771F;&#x5B9E;&#x7684;ip&#x5730;&#x5740;&#x6216;&#x8005;&#x4E3B;&#x673A;&#x540D;&#x3002;</p>
+<p><code>IdentitiesOnly yes</code>&#x8868;&#x793A;&#x53EA;&#x4F7F;&#x7528;<code>IdentityFile</code>&#x5B9A;&#x4E49;&#x7684;&#x6587;&#x4EF6;&#x3002;&#x5047;&#x5982;&#x5728;<code>ssh-agent</code>&#x6709;&#x591A;&#x4E2A;&#x79C1;&#x94A5;&#x5BF9;&#x5E94;&#xFF0C;&#x90A3;&#x4E48;&#x5728;&#x8FD9;&#x91CC;&#x4E5F;&#x53EA;&#x662F;&#x7528;<code>IdentityFile</code>&#x5B9A;&#x4E49;&#x7684;&#x3002;</p>
+<p><code>IdentityFile &lt;PRIVATE_KEY_PATH&gt;</code>&#x6307;&#x5B9A;&#x79C1;&#x94A5;&#x4F4D;&#x7F6E;&#x3002;</p>
+<p>&#x5728;&#x9700;&#x8981;&#x7BA1;&#x7406;&#x591A;&#x7EC4;&#x5BC6;&#x94A5;&#x5BC6;&#x94A5;&#x65F6;&#xFF0C;&#x5EFA;&#x8BAE;&#x4F7F;&#x7528;&#x8FD9;&#x79CD;&#x65B9;&#x5F0F;&#x914D;&#x7F6E;&#x3002;</p>
+<p>&#x6837;&#x4F8B;&#xFF1A;</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">Host plus </span><br><span class="line">    Hostname 10.10.10.10</span><br><span class="line">    IdentitiesOnly yes</span><br><span class="line">    IdentityFile ~/.ssh/id_rsa_plus</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2016/05/20/Linux-常用指令/" id="article-nav-older" class="article-nav-link-wrap">
+      <div class="article-nav-title">Linux 常用指令</div>
+      <strong class="article-nav-caption">></strong>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+
+<div class="share_jia">
+	<!-- JiaThis Button BEGIN -->
+	<div class="jiathis_style">
+		<span class="jiathis_txt">Share to: &nbsp; </span>
+		<a class="jiathis_button_facebook"></a> 
+    <a class="jiathis_button_twitter"></a>
+    <a class="jiathis_button_plus"></a> 
+    <a class="jiathis_button_tsina"></a>
+		<a class="jiathis_button_cqq"></a>
+		<a class="jiathis_button_douban"></a>
+		<a class="jiathis_button_weixin"></a>
+		<a class="jiathis_button_tumblr"></a>
+    <a href="http://www.jiathis.com/share" class="jiathis jiathis_txt jtico jtico_jiathis" target="_blank"></a>
+	</div>
+	<script type="text/javascript" src="http://v3.jiathis.com/code/jia.js?uid=1405949716054953" charset="utf-8"></script>
+	<!-- JiaThis Button END -->
+</div>
+
+
+
+
+
+
+
+
+</div>
+      <footer id="footer">
+  <div class="outer">
+    <div id="footer-info">
+    	<div class="footer-left">
+    		&copy; 2016 Chenjh
+    	</div>
+      	<div class="footer-right">
+      		<a href="http://hexo.io/" target="_blank">Hexo</a>  Theme <a href="https://github.com/litten/hexo-theme-yilia" target="_blank">Yilia</a> by Litten
+      	</div>
+    </div>
+  </div>
+</footer>
+    </div>
+    
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+
+
+<script>
+	var yiliaConfig = {
+		fancybox: true,
+		mathjax: true,
+		animate: true,
+		isHome: false,
+		isPost: true,
+		isArchive: false,
+		isTag: false,
+		isCategory: false,
+		open_in_new: true
+	}
+</script>
+<script src="http://7.url.cn/edu/jslib/comb/require-2.1.6,jquery-1.9.1.min.js"></script>
+<script src="/js/main.js"></script>
+
+
+
+
+
+
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+    tex2jax: {
+        inlineMath: [ ['$','$'], ["\\(","\\)"]  ],
+        processEscapes: true,
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+    }
+});
+
+MathJax.Hub.Queue(function() {
+    var all = MathJax.Hub.getAllJax(), i;
+    for(i=0; i < all.length; i += 1) {
+        all[i].SourceElement().parentNode.className += ' has-jax';                 
+    }       
+});
+</script>
+
+<script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML">
+</script>
+
+
+  </div>
+</body>
+</html>
