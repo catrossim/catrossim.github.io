@@ -6,19 +6,19 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" >
   <title>ssh无密码登陆小记 | C&#39;s Blog</title>
   <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
-  <meta name="description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
-&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
+  <meta name="description" content="&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x76EE;&amp;#x5F55;&amp;#x3001;&amp;#x6307;&amp;#x5B9A;shel">
 <meta property="og:type" content="article">
 <meta property="og:title" content="ssh无密码登陆小记">
 <meta property="og:url" content="http://yoursite.com/2016/05/23/ssh无密码登陆小记/index.html">
 <meta property="og:site_name" content="C's Blog">
-<meta property="og:description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
-&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
-<meta property="og:updated_time" content="2016-05-23T12:44:44.000Z">
+<meta property="og:description" content="&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x76EE;&amp;#x5F55;&amp;#x3001;&amp;#x6307;&amp;#x5B9A;shel">
+<meta property="og:updated_time" content="2016-05-24T07:36:57.000Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="ssh无密码登陆小记">
-<meta name="twitter:description" content="ssh&amp;#x65E0;&amp;#x5BC6;&amp;#x7801;&amp;#x767B;&amp;#x9646;&amp;#x5C0F;&amp;#x8BB0;&amp;#x76EE;&amp;#x6807;
-&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;">
+<meta name="twitter:description" content="&amp;#x76EE;&amp;#x6807;
+&amp;#x8FDC;&amp;#x7A0B;&amp;#x670D;&amp;#x52A1;&amp;#x5668;(R)&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;test&amp;#xFF0C;&amp;#x5E76;&amp;#x5BF9;test&amp;#x521B;&amp;#x5EFA;&amp;#x7528;&amp;#x6237;&amp;#x76EE;&amp;#x5F55;&amp;#x3001;&amp;#x6307;&amp;#x5B9A;shel">
   
     <link rel="alternative" href="/atom.xml" title="C&#39;s Blog" type="application/atom+xml">
   
@@ -102,7 +102,7 @@
 				
 				<section class="switch-part switch-part2">
 					<div class="widget tagcloud" id="js-tagcloud">
-						<a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
+						<a href="/tags/hexo/" style="font-size: 10px;">hexo</a> <a href="/tags/linux/" style="font-size: 10px;">linux</a> <a href="/tags/ssh/" style="font-size: 10px;">ssh</a>
 					</div>
 				</section>
 				
@@ -195,7 +195,7 @@
     
     <div class="article-entry" itemprop="articleBody">
       
-        <h1 id="ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;"><a href="#ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;" class="headerlink" title="ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;"></a>ssh&#x65E0;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x5C0F;&#x8BB0;</h1><h2 id="&#x76EE;&#x6807;"><a href="#&#x76EE;&#x6807;" class="headerlink" title="&#x76EE;&#x6807;"></a>&#x76EE;&#x6807;</h2><ol>
+        <h2 id="&#x76EE;&#x6807;"><a href="#&#x76EE;&#x6807;" class="headerlink" title="&#x76EE;&#x6807;"></a>&#x76EE;&#x6807;</h2><ol>
 <li>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x521B;&#x5EFA;&#x7528;&#x6237;<code>test</code>&#xFF0C;&#x5E76;&#x5BF9;test&#x521B;&#x5EFA;&#x7528;&#x6237;&#x76EE;&#x5F55;&#x3001;&#x6307;&#x5B9A;shell&#x3001;&#x521D;&#x59CB;&#x5316;&#x5BC6;&#x7801;&#x3002;</li>
 <li>&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x7981;&#x7528;<code>root</code>&#x7528;&#x6237;&#x767B;&#x9646;&#xFF0C;&#x53EF;&#x7528;<code>test</code>&#x8FDB;&#x884C;&#x514D;&#x5BC6;&#x7801;&#x767B;&#x9646;&#x3002;</li>
 <li>&#x672C;&#x5730;&#x670D;&#x52A1;&#x5668;(L)&#x901A;&#x8FC7;ssh&#x767B;&#x9646;&#x5230;&#x8FDC;&#x7A0B;&#x670D;&#x52A1;&#x5668;(R)&#x65F6;&#x4E0D;&#x9700;&#x8981;&#x8F93;&#x5165;&#x5BC6;&#x7801;&#xFF1B;<a id="more"></a>
@@ -266,6 +266,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2016/05/24/hexo-githubpages/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption"><</strong>
+      <div class="article-nav-title">
+        
+          用GithubPages+Hexo搭建博客
+        
+      </div>
+    </a>
   
   
     <a href="/2016/05/20/Linux-常用指令/" id="article-nav-older" class="article-nav-link-wrap">
